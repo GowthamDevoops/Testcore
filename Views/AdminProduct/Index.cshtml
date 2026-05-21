@@ -1,1 +1,43 @@
-﻿<h1> Show All Product Details</h1>
+﻿@using TestApp.Models
+@model IEnumerable<Product>
+
+    <div class="row align-items-center mb-3">
+        <div class="col-md-2 text-secondary">
+            <h2 >product List</h2>
+        </div>
+        <div class="col-md-10 text-end">
+     
+        <a asp-action="Create" class="btn btn-success">Add Product</a>
+        </div>
+       
+    </div>
+
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Price</th>
+                <th>Image</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var product in Model)
+            {
+                <tr>
+                    <td>@product.Id</td>
+                    <td>@product.Name</td>
+                    <td>@product.Description</td>
+                    <td>@product.Price.ToString("C")</td>
+                <td><img src="@product.Imagepath" alt="@product.Name" width="100" /></td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@product.Id" class="btn btn-sm btn-warning"><i class="bi bi-pencil"></i>Edit</a>
+                    <a asp-action="Delete" asp-route-id="@product.Id" class="btn btn-sm btn-warning"><i class="bi bi-archive"></i>Delete</a>
+                </td>
+               
+                </tr>
+            }
+    </tbody>    
+    </table>
