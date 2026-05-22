@@ -33,7 +33,7 @@ namespace TestApp.Controllers
                 cdb.Quantity +=1;
             _context.CartItems.Update(cdb);
                 await _context.SaveChangesAsync();
-           
+            TempData["sucess"] = "Cart Item Incremented Sucessfully";
             return RedirectToAction(nameof(Index));
         }
 
@@ -56,8 +56,9 @@ namespace TestApp.Controllers
                 cdb.Quantity -= 1;
                 _context.CartItems.Update(cdb);
                 await _context.SaveChangesAsync();
+                TempData["sucess"] = "Cart Item Decremented Sucessfully";
 
-               
+
             }
             return RedirectToAction(nameof(Index));
 
@@ -70,6 +71,8 @@ namespace TestApp.Controllers
             _context.CartItems.Remove(cdb);
             HttpContext.Session.SetInt32(SD.SessionCart, _context.CartItems.Count(x=>x.userid==userid)-1);
             _context.SaveChangesAsync();
+            TempData["sucess"] = "Cart Item Removed      Sucessfully";
+
             return RedirectToAction(nameof(Index));
 
         }

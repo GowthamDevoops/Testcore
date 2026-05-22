@@ -1,6 +1,27 @@
 ﻿@using TestApp.Models
 @model IEnumerable<Product>
 
+@* @if (TempData["sucess"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["sucess"]
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="close"></button>
+    </div>
+} *@
+@* <script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+
+@if (TempData["sucess"] != null)
+{
+    <script>
+       
+            toastr.success('@TempData["sucess"]');
+     
+    </script>
+   
+} *@
+
+
     <div class="row align-items-center mb-3">
         <div class="col-md-2 text-secondary">
             <h2 >product List</h2>

@@ -93,7 +93,7 @@ namespace TestApp.Controllers
 
                 _context.Products.Update(pr);
                 _context.SaveChanges();
-
+                TempData["sucess"] = "Record updated Sucessfully";
                 return RedirectToAction("Index");
             }
 
@@ -105,6 +105,7 @@ namespace TestApp.Controllers
             _context.Products.Remove(product);
             await _context.SaveChangesAsync();
             // return View(product);
+            TempData["sucess"] = "Record Deleted Sucessfully";
             return RedirectToAction("Index");
         }
 
@@ -147,6 +148,7 @@ namespace TestApp.Controllers
 
                     _context.Products.Add(product);
                     _context.SaveChanges();
+                    TempData["sucess"] = "Record Inserted Sucessfully";
                     return RedirectToAction("Index");
                 }
                 else
