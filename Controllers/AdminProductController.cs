@@ -20,6 +20,9 @@ namespace TestApp.Controllers
         public IActionResult Index()
         {
          List<Product> products =   _context.Products.ToList();
+             ViewBag.Totalcount = products.Count;
+            ViewData["tc"]=products.Count;
+            ViewBag.latest = products.OrderByDescending(a => a.CreatedAt).Select(a => a.Name).FirstOrDefault() ?? "No Products";
             return View(products);
         }
 
@@ -31,6 +34,7 @@ namespace TestApp.Controllers
         public async Task<IActionResult> Edit(int id)
         {
             Product product = await _context.Products.FindAsync(id);
+            
             return View(product);
         }
 
